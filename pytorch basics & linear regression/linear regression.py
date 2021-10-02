@@ -70,11 +70,11 @@ with torch.no_grad():
     b.grad.zero_()
 
 # Train for multiple epochs
-for i in range(100):
+for i in range(800):
     preds=model(inputs)
     loss=mse(preds,targets)
     loss.backward()
-    with torch.no_grad():
+    with torch.no_grad(): # with statement no grade back track
         w-=w.grad*1e-5
         b-=b.grad*1e-5
         w.grad.zero_()
@@ -83,6 +83,11 @@ for i in range(100):
 # calculate the loss
 preds=model(inputs)
 loss=mse(preds,targets)
+print(loss)
+print(preds)
+print(targets)
+
+
 
 
 
